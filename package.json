@@ -1,0 +1,49 @@
+{
+  "name": "es6-sample",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nodemon --exec babel-node src/bin/www.js",
+    "build": "NODE_ENV=production babel src --out-dir dist --copy-files",
+    "start": "npm run build && pm2 start ecosystem.config.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.js": [
+      "node_modules/.bin/eslint --fix",
+      "node_modules/.bin/prettier --write"
+    ]
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.18.3",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "^3.1.8",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "pm2": "^5.2.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.18.5",
+    "@babel/eslint-parser": "^7.18.2",
+    "@babel/node": "^7.18.5",
+    "@babel/plugin-transform-runtime": "^7.18.5",
+    "@babel/preset-env": "^7.18.2",
+    "babel-eslint": "^10.1.0",
+    "babel-plugin-transform-remove-console": "^6.9.4",
+    "eslint": "^8.18.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^4.3.8",
+    "lint-staged": "^13.0.2",
+    "prettier": "2.7.1"
+  }
+}
